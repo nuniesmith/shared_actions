@@ -402,9 +402,9 @@ jobs:
           fi
 
           # Prefer FKS service-specific compose files when present (e.g., api/auth/web), regardless of start.sh presence
-          if [[ '__SVC_NAME__' =~ ^fks- ]]; then
+          if [[ '__SVC_NAME__' =~ ^fks_ ]]; then
             SERVICE_TYPE='__SVC_NAME__'
-            SERVICE_TYPE="${SERVICE_TYPE#fks-}"
+            SERVICE_TYPE="${SERVICE_TYPE#fks_}"
             echo "🔍 FKS service detected (${SERVICE_TYPE}); checking for docker-compose.${SERVICE_TYPE}.yml"
             if [[ -f "docker-compose.${SERVICE_TYPE}.yml" ]]; then
               echo "🐳 Using service-specific compose file: docker-compose.${SERVICE_TYPE}.yml"
@@ -456,7 +456,7 @@ jobs:
               exit 1
             fi
 
-          # Deploy using start.sh if available (fallback for non-fks-* services)
+          # Deploy using start.sh if available (fallback for non-fks_* services)
           elif [[ -f 'start.sh' ]]; then
             echo '🚀 Found start.sh - using custom deployment script'
             chmod +x start.sh
@@ -542,10 +542,10 @@ jobs:
             
             docker-compose down 2>/dev/null || true
             docker-compose up -d
-          # Check for service-specific docker-compose files (e.g., docker-compose.auth.yml for fks-auth)
-          elif [[ '__SVC_NAME__' =~ ^fks- ]]; then
+          # Check for service-specific docker-compose files (e.g., docker-compose.auth.yml for fks_auth)
+          elif [[ '__SVC_NAME__' =~ ^fks_ ]]; then
             SERVICE_TYPE="__SVC_NAME__"
-            SERVICE_TYPE="${SERVICE_TYPE#fks-}"  # Extract 'auth', 'api', 'web' from 'fks-auth', etc.
+            SERVICE_TYPE="${SERVICE_TYPE#fks_}"  # Extract 'auth', 'api', 'web' from 'fks_auth', etc.
             echo "🔍 FKS service detected: __SVC_NAME__, looking for docker-compose.$SERVICE_TYPE.yml"
             
             # Pre-deployment Docker network test and fix
@@ -836,8 +836,8 @@ jobs:
             if [[ -f 'docker-compose.yml' ]]; then
               docker-compose restart
             # Check for service-specific docker-compose files for FKS services
-            elif [[ '${{ env.SERVICE_NAME }}' =~ ^fks- ]]; then
-              SERVICE_TYPE='${SERVICE_NAME#fks-}'  # Extract service type
+            elif [[ '${{ env.SERVICE_NAME }}' =~ ^fks_ ]]; then
+              SERVICE_TYPE='${SERVICE_NAME#fks_}'  # Extract service type
               if [[ -f \"docker-compose.\$SERVICE_TYPE.yml\" ]]; then
                 echo \"🔄 Restarting using: docker-compose.\$SERVICE_TYPE.yml\"
                 docker-compose -f \"docker-compose.\$SERVICE_TYPE.yml\" restart

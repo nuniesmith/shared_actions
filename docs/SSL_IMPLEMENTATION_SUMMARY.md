@@ -26,7 +26,7 @@ Successfully implemented a unified SSL certificate management system across all 
   - `config/nginx/web/conf.d/default.conf` - React SPA with API proxying
 - **Docker**: Updated `docker-compose.web.yml` with file-based SSL mounting
 - **Systemd**: Timer at 2:30 AM/PM to avoid conflicts
-- **Management**: `fks-ssl` command for easy management
+- **Management**: `fks_ssl` command for easy management
 
 ### 3. ATS SSL Management (✅ COMPLETE)
 - **Location**: `/home/jordan/oryx/code/repos/ats/`
@@ -73,7 +73,7 @@ Successfully implemented a unified SSL certificate management system across all 
 - **Service-specific CSP** for gaming/trading platforms
 
 ### Management Tools
-- **Unified commands**: `nginx-ssl`, `fks-ssl`, `ats-ssl`
+- **Unified commands**: `nginx-ssl`, `fks_ssl`, `ats-ssl`
 - **Status monitoring**: Certificate expiry, service health
 - **Manual operations**: Force renewal, generate self-signed
 - **Logging integration**: Centralized logs with journald
@@ -124,12 +124,12 @@ CLOUDFLARE_API_TOKEN=your-api-token      # Optional
 ```bash
 # Start automatic renewals
 sudo nginx-ssl start
-sudo fks-ssl start
+sudo fks_ssl start
 sudo ats-ssl start
 
 # Check status
 nginx-ssl status
-fks-ssl status
+fks_ssl status
 ats-ssl status
 ```
 

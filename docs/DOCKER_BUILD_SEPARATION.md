@@ -139,9 +139,9 @@ The system maintains full backward compatibility while providing much better per
 
 #### **Modified Deployment Flow:**
 1. **build-docker-images** ➜ Builds all Docker images
-2. **deploy-fks-auth** ➜ Creates auth server, pulls pre-built images
-3. **deploy-fks-api** ➜ Creates API server, pulls pre-built images  
-4. **deploy-fks-web** ➜ Creates web server, pulls pre-built images
+2. **deploy-fks_auth** ➜ Creates auth server, pulls pre-built images
+3. **deploy-fks_api** ➜ Creates API server, pulls pre-built images  
+4. **deploy-fks_web** ➜ Creates web server, pulls pre-built images
 5. **deployment-summary** ➜ Updates DNS and shows summary
 
 ## Benefits
@@ -183,8 +183,8 @@ needs: [build-docker-images, previous-job]  # Wait for images + previous server
 ## Image Versioning Strategy
 
 ### **Tags Generated:**
-- **Versioned**: `fks-auth:main-a1b2c3d4` (branch + 8-char SHA)
-- **Latest**: `fks-auth:latest` (always points to newest)
+- **Versioned**: `fks_auth:main-a1b2c3d4` (branch + 8-char SHA)
+- **Latest**: `fks_auth:latest` (always points to newest)
 
 ### **Advantages:**
 - **Reproducible Deployments**: Exact image versions are trackable
@@ -208,19 +208,19 @@ needs: [build-docker-images, previous-job]  # Wait for images + previous server
 ### **Normal Deployment** (builds images + deploys):
 ```bash
 # Workflow will build images first, then deploy servers
-gh workflow run fks-deploy.yml --ref main -f action_type=deploy
+gh workflow run fks_deploy.yml --ref main -f action_type=deploy
 ```
 
 ### **Skip Docker Build** (use existing images):
 ```bash
 # Skip building, use existing latest images
-gh workflow run fks-deploy.yml --ref main -f action_type=deploy -f skip_docker_build=true
+gh workflow run fks_deploy.yml --ref main -f action_type=deploy -f skip_docker_build=true
 ```
 
 ### **Infrastructure Only** (servers without new images):
 ```bash
 # Deploy infrastructure but skip building new images
-gh workflow run fks-deploy.yml --ref main -f action_type=deploy -f skip_docker_build=true
+gh workflow run fks_deploy.yml --ref main -f action_type=deploy -f skip_docker_build=true
 ```
 
 ## Next Steps

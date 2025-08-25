@@ -104,7 +104,7 @@ docker info
 docker network rm $(docker network ls -q) 2>/dev/null || true
 
 # Recreate networks manually
-docker network create --driver bridge --subnet=172.20.0.0/16 fks-network
+docker network create --driver bridge --subnet=172.20.0.0/16 fks_network
 docker network create --driver bridge --subnet=172.21.0.0/16 ats-network
 docker network create --driver bridge --subnet=172.22.0.0/16 nginx-network
 ```

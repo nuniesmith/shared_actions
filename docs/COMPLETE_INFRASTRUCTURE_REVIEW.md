@@ -79,9 +79,9 @@ echo "🔄 FORCING Docker builds - DockerHub images were cleared"
 #### **2.1 Service Separation Excellence**
 ```yaml
 # Perfect multi-server design
-deploy-fks-auth:   # g6-nanode-1  ($5/month)  - External auth services
-deploy-fks-api:    # g6-standard-1 ($12/month) - Python API + workers  
-deploy-fks-web:    # g6-nanode-1  ($5/month)  - React frontend + nginx
+deploy-fks_auth:   # g6-nanode-1  ($5/month)  - External auth services
+deploy-fks_api:    # g6-standard-1 ($12/month) - Python API + workers  
+deploy-fks_web:    # g6-nanode-1  ($5/month)  - React frontend + nginx
 ```
 
 #### **2.2 Docker Configuration Mastery**
@@ -103,7 +103,7 @@ deploy-fks-web:    # g6-nanode-1  ($5/month)  - React frontend + nginx
 # Current: External network dependency
 external:
   external: true
-  name: fks-external
+  name: fks_external
 
 # Recommendation: Add Tailscale mesh networking
 - Services communicate via Tailscale IPs
@@ -177,13 +177,13 @@ services:
 #### **4.1 Configuration Management** ⚠️
 ```nginx
 # Missing: Dynamic upstream configuration
-upstream fks-api {
+upstream fks_api {
     # Should auto-discover via Tailscale DNS
-    server fks-api.tailnet:8000;
+    server fks_api.tailnet:8000;
 }
 
-upstream fks-web {
-    server fks-web.tailnet:3000;
+upstream fks_web {
+    server fks_web.tailnet:3000;
 }
 ```
 
@@ -275,9 +275,9 @@ healthcheck:
 ```yaml
 # Use Tailscale DNS for service discovery
 environment:
-  - API_URL=http://fks-api:8000
-  - WEB_URL=http://fks-web:3000
-  - AUTH_URL=http://fks-auth:9000
+  - API_URL=http://fks_api:8000
+  - WEB_URL=http://fks_web:3000
+  - AUTH_URL=http://fks_auth:9000
 ```
 
 ### 🎯 **Priority 2: Medium Impact, Medium Effort**
@@ -326,12 +326,12 @@ backup-databases:
 #### **6.7 High Availability Setup**
 ```yaml
 # Multi-region deployment capability
-deploy-fks-api-primary:
+deploy-fks_api-primary:
   uses: nuniesmith/actions/.github/workflows/deploy.yml@main
   with:
     target_region: 'ca-central'
     
-deploy-fks-api-backup:
+deploy-fks_api-backup:
   uses: nuniesmith/actions/.github/workflows/deploy.yml@main
   with:
     target_region: 'us-east'
@@ -344,7 +344,7 @@ deploy-fks-api-backup:
   uses: docker/build-push-action@v4
   with:
     push: true
-    tags: ghcr.io/nuniesmith/fks-api:${{ github.sha }}
+    tags: ghcr.io/nuniesmith/fks_api:${{ github.sha }}
 ```
 
 ---

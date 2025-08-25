@@ -5,9 +5,9 @@ This document describes the enhanced integration between your shared actions rep
 ## 🎯 Updated Multi-Server Implementation
 
 **FIXED**: The enhanced deployment workflow now properly creates and deploys to three separate servers:
-- `fks-auth` - Authentication and user management services
-- `fks-api` - Trading API, workers, and data services  
-- `fks-web` - React frontend and web services
+- `fks_auth` - Authentication and user management services
+- `fks_api` - Trading API, workers, and data services  
+- `fks_web` - React frontend and web services
 
 Each server uses the appropriate Docker Compose file:
 - `docker-compose.auth.yml` for auth server
@@ -61,7 +61,7 @@ This document describes the enhanced integration between your shared actions rep
 - **Tailscale IP Detection**: Automatically discovers and uses VPN IPs
 
 ### 2. FKS Service Manager
-- **Multi-Server Orchestration**: `services/fks/fks-service-manager.sh`
+- **Multi-Server Orchestration**: `services/fks/fks_service-manager.sh`
 - **Deployment Coordination**: Handles auth → api → web deployment order
 - **Health Checks**: Comprehensive service health validation
 - **Server Connectivity Testing**: Pre-deployment validation
@@ -116,7 +116,7 @@ on:
 
 jobs:
   deploy:
-    uses: ./.github/workflows/fks-enhanced-deploy.yml
+    uses: ./.github/workflows/fks_enhanced-deploy.yml
     with:
       deployment_mode: 'single'
       server_type: 'g6-standard-2'
@@ -130,14 +130,14 @@ jobs:
 Deploy FKS across three optimized servers:
 
 ```yaml
-# .github/workflows/deploy-fks-multi.yml
+# .github/workflows/deploy-fks_multi.yml
 name: Deploy FKS Multi-Server
 on:
   workflow_dispatch:
 
 jobs:
   deploy:
-    uses: ./.github/workflows/fks-enhanced-deploy.yml
+    uses: ./.github/workflows/fks_enhanced-deploy.yml
     with:
       deployment_mode: 'multi-all'
       server_type: 'g6-standard-2'  # API server gets this
@@ -152,7 +152,7 @@ Use the enhanced tools directly:
 
 ```bash
 # Deploy using service manager
-./services/fks/fks-service-manager.sh deploy --mode multi \
+./services/fks/fks_service-manager.sh deploy --mode multi \
   --auth-server auth.7gram.xyz \
   --api-server api.7gram.xyz \
   --web-server web.7gram.xyz
@@ -164,7 +164,7 @@ Use the enhanced tools directly:
   --web-ip 100.64.0.3
 
 # Health check
-./services/fks/fks-service-manager.sh health-check --mode multi \
+./services/fks/fks_service-manager.sh health-check --mode multi \
   --auth-server auth.7gram.xyz \
   --api-server api.7gram.xyz \
   --web-server web.7gram.xyz
@@ -177,7 +177,7 @@ Use the enhanced tools directly:
 Copy and customize the configuration template:
 
 ```bash
-cp templates/fks-multi-server.env.template fks/.env
+cp templates/fks_multi-server.env.template fks/.env
 # Edit the file with your specific configuration
 ```
 
@@ -281,7 +281,7 @@ curl https://auth.7gram.xyz/api/v3/ping/
 
 ```bash
 # Check all services in multi-server setup
-./services/fks/fks-service-manager.sh health-check --mode multi \
+./services/fks/fks_service-manager.sh health-check --mode multi \
   --auth-server auth.7gram.xyz \
   --api-server api.7gram.xyz \
   --web-server web.7gram.xyz
@@ -329,7 +329,7 @@ ssh user@server "cd fks && docker compose logs -f"
 ./scripts/dns/cloudflare-updater.sh test-api
 
 # Manual deployment
-./services/fks/fks-service-manager.sh deploy --mode single --server fks.7gram.xyz
+./services/fks/fks_service-manager.sh deploy --mode single --server fks.7gram.xyz
 ```
 
 ## 📊 Monitoring & Maintenance

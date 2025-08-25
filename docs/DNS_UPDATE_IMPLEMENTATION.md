@@ -5,17 +5,17 @@ Added automatic DNS record updates to the FKS multi-server deployment workflow t
 
 ## DNS Mapping Strategy
 
-### 🔐 Auth Server (fks-auth)
+### 🔐 Auth Server (fks_auth)
 - `auth.7gram.xyz` → Auth Server IP
 - Handles: Authentication, SSO, user management
 
-### ⚡ API Server (fks-api) 
+### ⚡ API Server (fks_api) 
 - `api.7gram.xyz` → API Server IP
 - `data.7gram.xyz` → API Server IP
 - `worker.7gram.xyz` → API Server IP
 - Handles: REST API, data processing, background workers
 
-### 🌐 Web Server (fks-web)
+### 🌐 Web Server (fks_web)
 - `fkstrading.xyz` → Web Server IP (primary domain)
 - `www.7gram.xyz` → Web Server IP
 - Handles: React frontend on port 3000, nginx reverse proxy

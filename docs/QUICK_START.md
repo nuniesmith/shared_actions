@@ -11,7 +11,7 @@ You now have a **centralized GitHub Actions repository** that can deploy and man
 1. **Copy the integration workflow:**
    ```bash
    # In your service repo (e.g., FKS repo)
-   cp actions/examples/service-repo-integration/fks-deploy.yml .github/workflows/deploy.yml
+   cp actions/examples/service-repo-integration/fks_deploy.yml .github/workflows/deploy.yml
    ```
 
 2. **Your service repo now calls the standardized actions:**
@@ -52,11 +52,11 @@ nuniesmith/actions/                    # Your standardized repo
 │   └── ats/config.yml               # ATS-specific settings
 └── examples/
     └── service-repo-integration/     # Copy these to your repos
-        ├── fks-deploy.yml
+        ├── fks_deploy.yml
         ├── nginx-deploy.yml
         └── ats-deploy.yml
 
-your-fks-repo/                        # Your service repositories
+your-fks_repo/                        # Your service repositories
 ├── .github/workflows/
 │   └── deploy.yml                   # Copied from examples
 └── your-app-code/

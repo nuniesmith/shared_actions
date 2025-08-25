@@ -1659,7 +1659,7 @@ jobs:
               docker network create --driver bridge --subnet=172.22.0.0/16 nginx-network
               ;;
             "fks")
-              docker network create --driver bridge --subnet=172.20.0.0/16 fks-network
+              docker network create --driver bridge --subnet=172.20.0.0/16 fks_network
               ;;
             "ats")
               docker network create --driver bridge --subnet=172.21.0.0/16 ats-network

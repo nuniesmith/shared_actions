@@ -160,7 +160,7 @@ Without cleanup (old behavior):
 
 ## Files Modified
 
-- `actions/.github/workflows/fks-enhanced-deploy.yml`
+- `actions/.github/workflows/fks_enhanced-deploy.yml`
   - Added NVIDIA firmware conflict resolution
   - Added cleanup steps for all deployment modes
   - Enhanced error handling throughout

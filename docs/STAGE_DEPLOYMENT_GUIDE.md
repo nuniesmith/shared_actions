@@ -155,7 +155,7 @@ tailscale ip -4
 
 # Check Docker networks
 docker network ls
-docker network inspect fks-network ats-network nginx-network
+docker network inspect fks_network ats-network nginx-network
 
 # Test DNS resolution
 nslookup service.7gram.xyz

@@ -76,7 +76,7 @@ ac40730418c19f9ce6e34fc546b7d519459c728b4d638fafdf224afe9cafda2d  ./scripts/stag
 356a0e33d18c9f1e41f220fd1c19662e9b47632bcabb167666717533ecd4b7ee  ./scripts/tailscale/setup-tailscale.sh
 4bf83f1910bccc6cfeb11be226c14cd3fa9735975a6fcc9641faa892e232099f  ./scripts/templates/ats-start.sh
 ac7ca0b0edf0e1affd1fbe0b1dd40a8f9687c0691cd1dbb59dff4ebeba3307cf  ./scripts/templates/deployable-start.sh
-f2afafaa3ef059fd6bc9dc3e418a4ee56eee6258617a09ccb1984e094bb2460c  ./scripts/templates/fks-start.sh
+f2afafaa3ef059fd6bc9dc3e418a4ee56eee6258617a09ccb1984e094bb2460c  ./scripts/templates/fks_start.sh
 c095da3120d148f61efa4a71bf134b163b14316b09bffdfa84a62e1d4ce6c064  ./scripts/templates/nginx-start-configured.sh
 8453230fae0a1304adefb9935dab97c1d4cf5d65d55bc0ae92c5c320fe208a8f  ./scripts/templates/nginx-start.sh
 8094f9b662e26ae640b19d40518f3d7ed271934da18105050ad6091b320a86f4  ./scripts/templates/README.md

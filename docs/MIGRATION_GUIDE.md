@@ -26,7 +26,7 @@ mv .github/workflows/*.yml .github/workflows/backup/
 1. Create `.github/workflows/deploy.yml`:
 
 ```yaml
-# Copy from examples/service-repo-integration/fks-deploy.yml
+# Copy from examples/service-repo-integration/fks_deploy.yml
 ```
 
 2. Update service-specific settings if needed
